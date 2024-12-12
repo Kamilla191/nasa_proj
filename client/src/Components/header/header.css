@@ -1,0 +1,47 @@
+/* Основной стиль для header */
+header {
+    background: linear-gradient(90deg, #1f1f5a, #2b2b75); /* Градиентный фон */
+    color: #70d8ff; /* Цвет текста */
+    padding: 25px;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    text-shadow: 0 0 10px #2a3bf0; /* Тень для текста */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Тень для блока */
+}
+
+/* Контейнер для навигации */
+.head_container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Стиль для каждой ссылки */
+.head_container a {
+    text-decoration: none;
+    color: #176df7; /* Цвет текста */
+    padding: 10px 15px;
+    font-size: 1em;
+    transition: color 0.3s, transform 0.3s;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+}
+
+/* Стиль при наведении на ссылку */
+.head_container a:hover {
+    color: #8e33fe; /* Цвет текста при наведении */
+    background: #2b2b75; /* Фон при наведении */
+    transform: scale(1.1); /* Увеличение масштаба */
+}
+
+/* Стили для ссылок внутри контейнера */
+.head_container span {
+    display: block;
+    margin: 0 auto;
+    font-size: 1.5em;
+    text-align: center;
+}
+

@@ -1,0 +1,54 @@
+
+/* Стили для input и кнопок */
+.first_input {
+    padding: 10px;
+    margin: 10px 0;
+    margin-left: 1%;
+    border-radius: 5px;
+    border: 1px solid #70d8ff;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.first_button {
+    padding: 12px;
+    width: 20%;
+    font-size: 1.2em;
+    color: #fff;
+    background: linear-gradient(45deg, #70d8ff, #4a90e2);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.first_button:hover {
+    background: linear-gradient(45deg, #4a90e2, #70d8ff);
+    transform: scale(1.1);
+}
+
+/* Стили для изображения */
+img {
+    width: 50%;
+    max-width: 50%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Стили для текста ошибок */
+p {
+    color: red;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+/* Центрирование контента */
+div {
+    text-align: center;
+    padding: 20px;
+}

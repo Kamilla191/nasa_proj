@@ -1,0 +1,54 @@
+/* Общие стили */
+@font-face {
+    font-family: 'Chernobyl';
+    src: url('/fonts/Chernobyl.otf') format('opentype'); /* Путь от папки public */
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family: 'Chernobyl', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* background: radial-gradient(circle, #0b0c22, #030512 80%); */
+    background: url('maxresdefault.jpg') repeat; /* Повторяем изображение */
+    background-size: contain; /* Растягиваем изображение */
+    z-index: -1; /* Устанавливаем ниже остальных элементов */
+    color: #ffffff;
+    /* overflow: hidden; */
+    
+}
+
+/* Применение для заголовков */
+h1, h2, h3, h4 {
+    font-family: 'Chernobyl', sans-serif;
+    color: #dc63fa; /* Цвет, похожий на золотистый оттенок */
+    text-shadow: 2px 2px 10px #000000, 0 0 25px #7a9bff, 0 0 5px #3f4cfc;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+/* Фон с эффектом звезд */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('Фон.png') repeat;
+    background-size: cover; /* Растягиваем фон по размеру экрана */
+    opacity: 0.3;
+    z-index: -1;
+}
+
+/* Второй фон для контента */
+body::after {
+    content: '';
+    position: absolute;
+    top: 100%; /* Начинаем сразу после первого фона */
+    left: 0;
+    width: 100%;
+    height: auto; /* Высота будет зависеть от контента */
+    background: url('maxresdefault.jpg') repeat; /* Повторяем изображение */
+    background-size: cover; /* Растягиваем изображение */
+    z-index: -1; /* Устанавливаем ниже остальных элементов */
+}
