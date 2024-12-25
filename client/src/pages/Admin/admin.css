@@ -1,15 +1,3 @@
-/* body::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('косм.png') repeat;
-    background-size: cover; 
-    opacity: 0.3;
-    z-index: -1;
-} */
 
 .body_back::after {
     content: '';
@@ -18,7 +6,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('косм.png') repeat;
+    background: url('../../assests/косм.png') repeat;
     background-size: cover; 
     opacity: 0.3;
     z-index: -1;

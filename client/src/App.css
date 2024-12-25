@@ -10,7 +10,7 @@ body {
     margin: 0;
     padding: 0;
     /* background: radial-gradient(circle, #0b0c22, #030512 80%); */
-    background: url('maxresdefault.jpg') repeat; /* Повторяем изображение */
+    background: url('../src/assests/maxresdefault.jpg') repeat; /* Повторяем изображение */
     background-size: contain; /* Растягиваем изображение */
     z-index: -1; /* Устанавливаем ниже остальных элементов */
     color: #ffffff;
@@ -34,7 +34,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('Фон.png') repeat;
+    background: url('../src/assests/Фон.png') repeat;
     background-size: cover; /* Растягиваем фон по размеру экрана */
     opacity: 0.3;
     z-index: -1;
@@ -48,7 +48,7 @@ body::after {
     left: 0;
     width: 100%;
     height: auto; /* Высота будет зависеть от контента */
-    background: url('maxresdefault.jpg') repeat; /* Повторяем изображение */
+    background: url('../src/assests/maxresdefault.jpg') repeat; /* Повторяем изображение */
     background-size: cover; /* Растягиваем изображение */
     z-index: -1; /* Устанавливаем ниже остальных элементов */
 }

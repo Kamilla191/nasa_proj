@@ -1,26 +1,25 @@
-import "./header.css"
-import {Link} from "react-router-dom"
-
+import './header.css';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
-    return(
+    return (
         <>
             <header>
                 <div className="head_container">
                     <Link to="/">
-                        <span>Home</span> <br/>
+                        <span>Home</span> <br />
                     </Link>
                     <Link to="/fir">
                         <span>APOD</span> <br />
                     </Link>
                     <Link to="/sec">
-                        <span>NeoWs</span> <br/>
+                        <span>NeoWs</span> <br />
                     </Link>
                     <Link to="/phearth">
-                        <span>Earth</span> <br/>
+                        <span>Earth</span> <br />
                     </Link>
                     <Link to="/register">
-                        <span>Register</span> <br/>
+                        <span>Register</span> <br />
                     </Link>
                     <Link to="/login">
                         <span>Login</span> <br />
@@ -31,5 +30,5 @@ export default function Header() {
                 </div>
             </header>
         </>
-    )
+    );
 }

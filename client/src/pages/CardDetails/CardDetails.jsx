@@ -1,7 +1,7 @@
 import './cardDetails.css';
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useParams, useNavigate } from 'react-router-dom';
 
 export default function CardDetails() {
     const { id } = useParams(); // Получаем ID карточки из URL
@@ -13,10 +13,12 @@ export default function CardDetails() {
     useEffect(() => {
         const fetchCard = async () => {
             try {
-                const response = await axios.get(`http://localhost:3010/admin/${id}`);
+                const response = await axios.get(
+                    `${process.env.REACT_APP_BACKEND_API}admin/${id}`,
+                );
                 setCard(response.data);
             } catch (err) {
-                setError("Error fetching card details");
+                setError('Error fetching card details');
                 console.error(err);
             } finally {
                 setLoading(false);
@@ -27,12 +29,14 @@ export default function CardDetails() {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`http://localhost:3010/admin/delete/${id}`);
-            alert("Card deleted successfully!");
-            navigate("/"); // Перенаправляем на главную страницу после удаления
+            await axios.delete(
+                `${process.env.REACT_APP_BACKEND_API}admin/delete/${id}`,
+            );
+            alert('Card deleted successfully!');
+            navigate('/'); // Перенаправляем на главную страницу после удаления
         } catch (err) {
-            console.error("Error deleting card:", err);
-            alert("Failed to delete card.");
+            console.error('Error deleting card:', err);
+            alert('Failed to delete card.');
         }
     };
 
@@ -52,7 +56,9 @@ export default function CardDetails() {
             <p>Carbohydrates: {card.uglevods}</p>
             <p>Mass: {card.massa}</p>
             <p>Tag: {card.tag}</p>
-            <button onClick={handleDelete} className="delete-button">Delete Card</button>
+            <button onClick={handleDelete} className="delete-button">
+                Delete Card
+            </button>
         </div>
     );
 }

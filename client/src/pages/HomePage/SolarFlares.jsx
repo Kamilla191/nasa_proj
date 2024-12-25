@@ -1,23 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchSolarFlares } from '../../store/solarFlaresSlice';
 import SolarFlaresCom from '../../Components/SolarFlaresCom/SolarFlaresCom';
 
 const SolarFlares = () => {
-    const [start_date, setStartDate] = useState(''); // Состояние для хранения даты
-    const [end_date, setEndDate] = useState(''); // Состояние для хранения даты
-    const [solarFlaresObjects, setSolarFlaresObjects] = useState([]); // Изменили на массив
-    const [error, setError] = useState('');
+    const [startDate, setStartDate] = useState(''); // Локальное состояние для даты начала
+    const [endDate, setEndDate] = useState(''); // Локальное состояние для даты окончания
+    const dispatch = useDispatch();
+    const { solarFlares, error } = useSelector((state) => state.solarFlares); // Доступ к состоянию из Redux
 
-    const fetchFlaresOptions = async () => {
-        try {
-            const response = await axios.get('http://localhost:3010/solar_flare', {
-                params: { start_date, end_date } // Передаем дату как параметр запроса
-            });
-            setSolarFlaresObjects(response.data); // Устанавливаем данные как массив
-            console.log(response.data); // Логируем данные
-        } catch (err) {
-            setError('Ошибка при загрузке данных');
-        }
+    const handleFetch = () => {
+        dispatch(fetchSolarFlares({ start_date: startDate, end_date: endDate })); // Диспатчим асинхронное действие
     };
 
     if (error) {
@@ -28,19 +21,21 @@ const SolarFlares = () => {
         <div>
             <h1>Солнечные вспышки за указанный период</h1>
             <input
-                className='first_input' 
-                type="date" 
-                value={start_date} 
+                className="first_input"
+                type="date"
+                value={startDate}
                 onChange={(e) => setStartDate(e.target.value)} // Обновляем состояние даты
             />
             <input
-                className='first_input'
-                type="date" 
-                value={end_date} 
+                className="first_input"
+                type="date"
+                value={endDate}
                 onChange={(e) => setEndDate(e.target.value)} // Обновляем состояние даты
             />
-            <button className='first_button' onClick={fetchFlaresOptions}>Пересчитать по указанным датам</button>
-            <SolarFlaresCom solarFlaresObjects={solarFlaresObjects} />
+            <button className="first_button" onClick={handleFetch}>
+                Пересчитать по указанным датам
+            </button>
+            <SolarFlaresCom solarFlaresObjects={solarFlares} />
         </div>
     );
 };
