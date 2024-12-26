@@ -3,19 +3,30 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchNearEarthObjects } from '../../store/nearEarthObjectsSlice';
 import NearEarthObjects from '../../Components/NearEarthObjects/NearEarthObjects';
+import { RootState } from '../../store/types';
+import { AppDispatch } from '../../store/types';
+import { NearEarthObjectsState } from '../../store/types';
 
 export default function SecPage() {
     const [startDate, setStartDate] = useState(''); // Локальное состояние для даты начала
     const [endDate, setEndDate] = useState(''); // Локальное состояние для даты окончания
-    const dispatch = useDispatch();
-    const { nearEarthObjects, error } = useSelector((state) => state.nearEarthObjects); // Получение данных из хранилища
+    const dispatch = useDispatch<AppDispatch>();
 
+    // Указываем типы для состояния из Redux
+    const { nearEarthObjects, error } = useSelector(
+        (state: RootState) => state.nearEarthObjects
+    ) as {
+        nearEarthObjects: NearEarthObjectsState;
+        error: string | null;
+    };
+
+    // Обработчик загрузки данных
     const handleFetchData = () => {
-        dispatch(fetchNearEarthObjects({ start_date: startDate, end_date: endDate })); // Диспатч асинхронного действия
+        dispatch(fetchNearEarthObjects({ start_date: startDate, end_date: endDate }));
     };
 
     return (
-        <>
+        <div className="sec-page">
             <div>
                 <h1>Near Earth Object Web Service (NeoWs)</h1>
                 <input
@@ -36,6 +47,6 @@ export default function SecPage() {
             </button>
             {error && <div className="error-message">Ошибка: {error}</div>}
             <NearEarthObjects nearEarthObjects={nearEarthObjects} />
-        </>
+        </div>
     );
 }

@@ -6,7 +6,6 @@ import SecPage from './pages/SecPage/SecPage';
 import Register from './pages/Registration/Register';
 import Login from './pages/Login/Login';
 import Admin from './pages/Admin/Admin';
-import CardDetails from './pages/CardDetails/CardDetails';
 import SolarFlares from './pages/HomePage/SolarFlares';
 import EarthImage from './Components/EarthImage/EarthImage';
 import { useSelector } from 'react-redux';
@@ -32,7 +31,6 @@ const App: React.FC = () => {
                     path="/profile"
                     element={user ? <Admin /> : <Login />}
                 />
-                <Route path="/card/:id" element={<CardDetails />} />
             </Routes>
         </BrowserRouter>
     );

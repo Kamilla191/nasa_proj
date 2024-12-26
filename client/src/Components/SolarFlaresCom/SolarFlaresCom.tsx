@@ -25,7 +25,11 @@ interface SolarFlare {
     linkedEvents?: LinkedEvent[];
 }
 
-const SolarFlaresCom: React.FC = () => {
+interface SolarFlaresComProps {
+    solarFlaresObjects: SolarFlare[];
+}
+
+const SolarFlaresCom: React.FC<SolarFlaresComProps> = ({ solarFlaresObjects }) => {
     // Типизация состояния с использованием RootState
     const { solarFlares } = useSelector((state: RootState) => state.solarFlares);
 

@@ -1,18 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store/types'; // Импортируем тип состояния
-import { NearEarthObjectsState, Asteroid, CloseApproachData } from '../../store/types'; // Импорт интерфейсов
+import { NearEarthObjectsState, Asteroid, CloseApproachData } from '../../store/types';
 
-const NearEarthObjects: React.FC = () => {
-    // Типизация состояния Redux
-    const { nearEarthObjects, error } = useSelector(
-        (state: RootState) => state.nearEarthObjects
-    ) as { nearEarthObjects: NearEarthObjectsState; error: string | null };
+interface NearEarthObjectsProps {
+    nearEarthObjects: NearEarthObjectsState;
+}
 
-    if (error) {
-        return <div className="error-message">Ошибка: {error}</div>;
-    }
-
+const NearEarthObjects: React.FC<NearEarthObjectsProps> = ({ nearEarthObjects }) => {
     return (
         <div>
             <h1>Близкие к Земле объекты</h1>

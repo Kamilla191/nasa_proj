@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSolarFlares } from '../../store/solarFlaresSlice';
 import SolarFlaresCom from '../../Components/SolarFlaresCom/SolarFlaresCom';
+import { RootState } from '../../store/types';
+import { AppDispatch } from '../../store/types';
 
 const SolarFlares = () => {
     const [startDate, setStartDate] = useState(''); // Локальное состояние для даты начала
     const [endDate, setEndDate] = useState(''); // Локальное состояние для даты окончания
-    const dispatch = useDispatch();
-    const { solarFlares, error } = useSelector((state) => state.solarFlares); // Доступ к состоянию из Redux
+    const dispatch = useDispatch<AppDispatch>();
+    const { solarFlares, error } = useSelector((state: RootState) => state.solarFlares);
+    
 
     const handleFetch = () => {
         dispatch(fetchSolarFlares({ start_date: startDate, end_date: endDate })); // Диспатчим асинхронное действие
